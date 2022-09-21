@@ -1,0 +1,12 @@
+Halaman utama : https://rattugas2.herokuapp.com/
+Halaman katalog : https://rattugas2.herokuapp.com/katalog/
+
+Kita membutuhkan Virtual Environment dapat mengizinkan kita untuk melakukan dependencies yang berbeda-beda antara project yang berjalan pada satu system operasi yang sama.
+
+implementasi
+pada fungsi views.py fungsi show_katalog  menerima parameter request lalu diteruskan ke fungsi render yang telah di import sebelumnya. fungsi akan mereturn dengan parameter request, file htlm katalog, dan context
+pada file urls.py melakukan routing terhadap fungsi show_katalog, file urls.py pada folder project_django, ditambahkan 'katalog/' dan include('katalog.urls') agar bisa diakses.
+untuk memetakan data yang didapat ke dalam HTML,ditambahkan loaddata file json dan mengedit file katalog.html yang akan berisikan for looping sehingga data yang ada dapat ditampilkan.
+deployment ke Heroku, langkah pertama adalah membuat app baru kemudian menambahkan Api Key dan App Name kesecret repository pada github dan akan terhubung secara langsung
+
+![Screenshot (2)](https://user-images.githubusercontent.com/92584623/190321359-81326209-697d-4825-a22f-025657e7cacd.png)
