@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched":"Yes",
+            "title":"Red Notice",
+            "rating": 4,
+            "release_date": "2021-11-04",
+            "review": "A comedy action movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":2,
+        "fields":{
+            "watched":"Not yet",
+            "title":"Free Guy",
+            "rating": 4,
+            "release_date": "2021-08-13",
+            "review": "A comedy action movie and also a fantasy movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":3,
+        "fields":{
+            "watched":"Yes",
+            "title":"Ocean's 8",
+            "rating": 5,
+            "release_date": "2018-06-08",
+            "review": "A comedy crime movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":4,
+        "fields":{
+            "watched":"Yes",
+            "title":"Enchanted",
+            "rating": 4,
+            "release_date": "2007-11-21",
+            "review": "A musical fantasy movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":5,
+        "fields":{
+            "watched":"Not yet",
+            "title":"Cinderella",
+            "rating": 4,
+            "release_date": "2015-03-11",
+            "review": "A romance movie and also a live action of classic fairy tale"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":6,
+        "fields":{
+            "watched":"Yes",
+            "title":"Flipped",
+            "rating": 5,
+            "release_date": "2010-08-06",
+            "review": "A teen rom-com movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":7,
+        "fields":{
+            "watched":"Not yet",
+            "title":"Inside Out",
+            "rating": 4,
+            "release_date": "2015-08-18",
+            "review": "A family movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":8,
+        "fields":{
+            "watched":"Not yet",
+            "title":"The Karate Kid",
+            "rating": 4,
+            "release_date": "2010-06-10",
+            "review": "A drama action movie and also a fantasy movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":9,
+        "fields":{
+            "watched":"Yes",
+            "title":"Wild Child",
+            "rating": 5,
+            "release_date": "2008-08-15",
+            "review": "A teen rom-com movie"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":10,
+        "fields":{
+            "watched":"Yes",
+            "title":"Spy Kids",
+            "rating": 4,
+            "release_date": "2001-03-18",
+            "review": "A kids action movie and also a fantasy movie"
+        }
+    }
+]
