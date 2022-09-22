@@ -1,3 +1,5 @@
+heroku : https://rattugas2.herokuapp.com/mywatchlist/
+
 Perbedaan antara JSON, XML, dan HTML
 -JSON adalah format data dan digunakan untuk menyimpan informasi secara terorganisir dan mudah diakses
 -XML adalah bahasa markup dan digunakan untuk menyimpan data atau transfer data 
