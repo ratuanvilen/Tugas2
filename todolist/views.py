@@ -12,8 +12,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
 
-
-
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -25,41 +23,6 @@ def show_todolist(request):
         'todolist' : data_todolist
     }
     return render(request, "todolist.html", context)
-
-@login_required(login_url='/todolist/login/') 
-def create_task(request):
-    if request.method == "POST":
-        title = request.POST.get('title')
-        description = request.POST.get('description')
-        date = datetime.datetime.now()  
-
-        is_finished = False
-        Task.objects.create(title=title, 
-        description=description, 
-        date=date, 
-        user=request.user, 
-        is_finished=is_finished)
-        response = HttpResponseRedirect(reverse('todolist:show_todolist'))
-        return response
-    return render(request, "create_task.html")
-
-@login_required(login_url='/todolist/login/')
-def delete_task(request, id):
-    data = Task.objects.get(id=id) 
-    data.delete()
-    return HttpResponseRedirect(reverse('todolist:show_todolist'))
-
-@login_required(login_url='/todolist/login/')
-def status(request, update_task):
-    data_update = Task.objects.get(id=update_task)
-
-    if data_update.is_finished:
-        data_update.is_finished = False
-    else:
-        data_update.is_finished = True
-    
-    data_update.save() 
-    return HttpResponseRedirect(reverse('todolist:show_todolist'))
 
 def register(request):
     form = UserCreationForm()
@@ -96,3 +59,37 @@ def logout_user(request):
     return response
 
 # Create your views here.
+@login_required(login_url='/todolist/login/') 
+def create_task(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        date = datetime.datetime.now()  
+
+        is_finished = False
+        Task.objects.create(title=title, 
+        description=description, 
+        date=date, 
+        user=request.user, 
+        is_finished=is_finished)
+        response = HttpResponseRedirect(reverse('todolist:show_todolist'))
+        return response
+    return render(request, "create_task.html")
+
+@login_required(login_url='/todolist/login/')
+def delete_task(request, id):
+    data = Task.objects.get(id=id) 
+    data.delete()
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+@login_required(login_url='/todolist/login/')
+def status(request, update_task):
+    data_update = Task.objects.get(id=update_task)
+
+    if data_update.is_finished:
+        data_update.is_finished = False
+    else:
+        data_update.is_finished = True
+    
+    data_update.save() 
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))
