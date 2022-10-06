@@ -1,18 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body style="background-color: #0000008a">
-<h1 style="text-align: center; color: #fff587 ">To do list {{user.username}}</h1>
+
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <style>
+          
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 14px 16px;
+            background-color: #B9FFF8;
+          }
+          
+          li {
+            display: inline;
+          }
+
+          li a{
+            text-decoration: none;
+          }
+
+          </style>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <span class="navbar-brand mb-0 h1" href="#">{{nama}}</span>
+          <span style='font-size:30px;'>&#127836;</span>
+          <a style="font-size: 30px">{{user.username}}</a>
+          <button  style=" float:right; background-color: #DFCDC3 ;padding: 14px 28px;"><a class="btn btn-warning" type="button" href="{% url 'todolist:logout' %}">Log Out</a></button>
+        </li>
+      </ul>
+  </div>
+</nav>
+
+<style>
+  body{
+    background-color: #DFCDC3;
+  }
+</style>
+
+<h1 style="text-align: center; color: #3C4245 "><span style='font-size:40px;'>&#129378;</span>{{user.username}}'s To do list<span style='font-size:40px;'>&#129378;</span></h1>
 
 <style>
     table, th{
       text-align: center;
-      border: 1px solid rgb(255, 255, 255);
+      border: 1px solid #C9E4C5;
       border-collapse: collapse;
     }
     td{
       text-align: center;
-      border: 1px solid rgb(255, 255, 255);
+      border: 1px solid #C9E4C5;
       border-collapse: collapse;
     }
     .button{
@@ -21,19 +62,23 @@
     }
   </style>
 
-<table rules="all", border="1", table align="center">
+<table style=" margin-top: 20px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: 50px;
+width: 80%;"rules="all", border="1", table align="center">
   <thread>
-    <tr style="background-color: rgb(250, 223, 131);">
-      <th colspan="2">Tanggal</th>
-      <th colspan="2">Judul</th>
-      <th colspan="3">Deskripsi</th>
+    <tr style="background-color: #E5E4CC;">
+      <th colspan="2">Date</th>
+      <th colspan="2">Title</th>
+      <th colspan="3">Description</th>
       <th colspan="2">Status</th>
-      <th colspan="2" >Pilihan</th>
+      <th colspan="2" ></th>
     </tr>
   </thread>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
     {% for task in todolist %}
-    <tr style="background-color: rgb(255, 237, 163);" >
+    <tr style="background-color: #E5E4CC;" >
         <td colspan="2">{{task.date}}</td>
         <td colspan="2">{{task.title}}</td>
         <td colspan="3">{{task.description}}</td>
@@ -51,9 +96,45 @@
     </tr>
 {% endfor %}
 </table>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+
+  {% for card in todolist %}
+  {#  Single Card Template:#}
+  <div class="card" style="width: 15rem; margin: 10px; background-color: aliceblue;">
+    <img src="{{ card.image }}" class="card-img-top" >
+    <div class="card-body">
+      <div style="display: flex; flex-direction: row;" >
+        <h1 class="card-title">{{ card.title }}</h1>
+        {#  Colored cirlce:#}
+        {% if card.is_finished %}
+              <div style="
+                background: #cf9fca;
+                width: 30px;
+                height: 30px;
+                margin-left: 130px;
+                border-radius: 50%;
+              "></div>
+              {% else %}
+                <div style="
+                background: #bdc6fa;
+                width: 30px;
+                height: 30px;
+                margin-left: 130px;
+                border-radius: 50%;
+              "></div>
+              {% endif %}
+      </div>
+      <p class="card-text">{{card.description }}</p>
+      <p class="card-text">{{card.date }}</p>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
 <div class="button">
-  <button ><a href="{% url 'todolist:logout' %}">Logout</a></button>
-  <button><a href="{% url 'todolist:create_task' %}">Add Todo</a></button>  
+  <button style="background-color: #cf9fca; padding: 14px 28px;"><a style=" text-decoration: none;" href="{% url 'todolist:create_task' %}">Add Todo</a></button>  
 </div>
 
 </body>
