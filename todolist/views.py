@@ -1,5 +1,7 @@
+from turtle import title
+from unittest import result
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from todolist.models import Task
 from django.shortcuts import redirect
@@ -93,3 +95,28 @@ def status(request, update_task):
     
     data_update.save() 
     return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+@login_required(login_url='/todolist/login/')
+def todolist_json(request):
+    data_task = Task.objects.all().filter(usernames=request.user)
+    return HttpResponse(serializers.serialize('json', data_task), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def todolist_ajax(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+
+        task = Task.objects.create(title=title, description=description, date=datetime.date.today(), usernames=request)
+        task.save()
+        result={
+            'fields':{
+                'title':task.title,
+                'description': task.description,
+                'date': task.date,
+            },
+            'pk':task.pk
+        }
+        return HttpResponse(b"CREATED", status=200)
+    
+    return HttpResponseNotFound
